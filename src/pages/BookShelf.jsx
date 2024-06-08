@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
 function BookShelf() {
     const [shelf, setShelf] = useState([]);
@@ -12,6 +13,16 @@ function BookShelf() {
         const updatedShelf = shelf.filter((book) => book.key !== bookKey);
         setShelf(updatedShelf);
         localStorage.setItem("bookshelf", JSON.stringify(updatedShelf));
+        toast('Book removed form the Shelf',
+            {
+                icon: '🫡😲',
+                style: {
+                    borderRadius: '10px',
+                    background: '#fff',
+                    color: '#333',
+                },
+            }
+        );
     };
 
     return (
@@ -25,8 +36,8 @@ function BookShelf() {
                 ) : (
                     shelf.map((book) => (
                         <div key={book.key} className="book-card">
-                            <h3>{book.title}</h3>
-                            <p>{book.author_name?.join(", ")}</p>
+                            <h3>Book Title: {book.title}</h3>
+                            <h3>Edition Count: {book.edition_count}</h3>
                             <button
                                 onClick={() => removeFromShelf(book.key)}
                                 className="b-card"

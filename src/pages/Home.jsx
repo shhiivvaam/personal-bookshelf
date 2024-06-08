@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Home = () => {
 
@@ -30,8 +31,27 @@ const Home = () => {
         if (!isBookAlreadyAdded) {
             bookshelf.push(book);
             localStorage.setItem("bookshelf", JSON.stringify(bookshelf));
+            toast('Book added in the Shelf',
+                {
+                    icon: '👍✅',
+                    style: {
+                        borderRadius: '10px',
+                        background: '#fff',
+                        color: '#333',
+                    },
+                }
+            );
         } else {
-            alert("This book is already in your bookshelf!");
+            toast('Already in the BookShelf',
+                {
+                    icon: '😶‍🌫️👀',
+                    style: {
+                        borderRadius: '10px',
+                        background: '#fff',
+                        color: '#333',
+                    },
+                }
+            );
         }
     };
 

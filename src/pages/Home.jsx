@@ -60,6 +60,7 @@ const Home = () => {
                 {books.map((book) => (
                     <div key={book.key} className="book-card">
                         <h3>{book.title}</h3>
+                        <h6>{book.edition_count}</h6>
                         <button onClick={() => addToBookShelf(book)} className="b-card">
                             Add to Bookshelf
                         </button>
